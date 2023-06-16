@@ -34,8 +34,8 @@ This Video Summarizer App uses LangChain and Whisper libraries to transcribe and
 1. Clone the repository:
 
 ```
-git clone https://github.com/yourusername/video-summarizer.git
-cd video-summarizer
+git clone https://github.com/ebt15/video-summary-whisper-langchain.git
+cd video-summary-whisper-langchain
 ```
 
 2. Create a virtual environment and activate it:
@@ -50,6 +50,7 @@ venv\Scripts\activate  # For Windows
 
 ```
 pip install -r requirements.txt
+pip install git+https://github.com/openai/whisper.git
 ```
 
 4. Set up your OpenAI API key:

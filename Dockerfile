@@ -26,4 +26,4 @@ EXPOSE 8501
 ENV OPENAI_API_KEY None
 
 # Run main.py when the container launches
-CMD ["streamlit", "run", "main.py"]
+CMD ["streamlit", "run", "app.py"]
