@@ -7,7 +7,7 @@ from langchain.docstore.document import Document
 
 
 class SummaryGenerator:
-    def __init__(self, model='gpt-3.5-turbo-16k', temperature=0, chunk_size=60000, chunk_overlap=20):
+    def __init__(self, model='gpt-3.5-turbo', temperature=0, chunk_size=8000, chunk_overlap=20):
         self.llm = ChatOpenAI(temperature=temperature, model=model)
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
 

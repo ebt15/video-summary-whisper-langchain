@@ -1,11 +1,11 @@
 # Video Summarizer App
 
-This Video Summarizer App uses LangChain and Whisper libraries to transcribe and summarize video content. The app transcribes the video to text using the Whisper model from OpenAI, and then generates a summary using the gpt-3.5-turbo-16k model API. The app is built with Streamlit for the UI/Web App interface and deployed on AWS Elastic Beanstalk using Docker containers.
+This Video Summarizer App uses LangChain and Whisper libraries to transcribe and summarize video content. The app transcribes the video to text using the Whisper model from OpenAI, and then generates a summary using the gpt-3.5-turbo model API. The app is built with Streamlit for the UI/Web App interface and deployed on AWS Elastic Beanstalk using Docker containers.
 
 ## Features
 
 - Transcribe video to text using the Whisper model from OpenAI
-- Summarize the transcript using the gpt-3.5-turbo-16k model API
+- Summarize the transcript using the gpt-3.5-turbo model API
 - Handle context limitations using the 'refine' chain in the LangChain library
 - Streamlit UI/Web App interface
 - Deployment on AWS Elastic Beanstalk using Docker containers
