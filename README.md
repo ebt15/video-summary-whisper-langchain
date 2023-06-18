@@ -70,6 +70,60 @@ streamlit run app.py
 
 2. Open your browser and navigate to `http://localhost:8501` to access the app.
 
+### Running the Video Summarizer App using Docker
+
+This section will guide you on how to run the Video Summarizer App using Docker. Docker allows you to package the application along with its dependencies into a container, making it easy to run the app on any system with Docker installed.
+
+### Prerequisites
+
+Before you proceed, make sure you have the following installed on your system:
+
+1. [Docker](https://www.docker.com/products/docker-desktop): Download and install the appropriate version of Docker for your operating system.
+
+2. An OpenAI API key: You will need an API key from OpenAI to use the video summarizer. You can obtain one by signing up at [OpenAI](https://beta.openai.com/signup/).
+
+### Steps to run the app
+
+1. Clone the repository or download the source code of the Video Summarizer App to your local machine.
+
+2. Open a terminal or command prompt and navigate to the root directory of the Video Summarizer App.
+
+3. Build the Docker image by running the following command:
+
+   ```
+   docker build -t video-summarizer .
+   ```
+
+   This command will create a Docker image named `video-summarizer` using the Dockerfile in the current directory.
+
+4. Run the Docker container using the following command:
+
+   ```
+   docker run -d -p 8501:8501 --env OPENAI_API_KEY=<your_openai_api_key> video-summarizer
+   ```
+
+   Replace `<your_openai_api_key>` with your actual OpenAI API key. This command will run the `video-summarizer` image in a detached mode, mapping the host's port 8501 to the container's port 8501, and setting the `OPENAI_API_KEY` environment variable.
+
+5. Open your web browser and navigate to `http://localhost:8501`. You should now see the Video Summarizer App running.
+
+6. To stop the running container, first find the container ID by running:
+
+   ```
+   docker ps
+   ```
+
+   This command will list all running containers along with their IDs.
+
+7. Stop the container by running:
+
+   ```
+   docker stop <container_id>
+   ```
+
+   Replace `<container_id>` with the actual container ID from the previous step.
+
+That's it! You have successfully run the Video Summarizer App using Docker.
+
 ### Deployment
 
 1. Build the Docker container:
