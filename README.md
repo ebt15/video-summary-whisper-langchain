@@ -70,11 +70,11 @@ streamlit run app.py
 
 2. Open your browser and navigate to `http://localhost:8501` to access the app.
 
-### Running the Video Summarizer App using Docker
+## Running the Video Summarizer App using Docker
 
 This section will guide you on how to run the Video Summarizer App using Docker. Docker allows you to package the application along with its dependencies into a container, making it easy to run the app on any system with Docker installed.
 
-### Prerequisites
+#### Prerequisites
 
 Before you proceed, make sure you have the following installed on your system:
 
@@ -82,7 +82,7 @@ Before you proceed, make sure you have the following installed on your system:
 
 2. An OpenAI API key: You will need an API key from OpenAI to use the video summarizer. You can obtain one by signing up at [OpenAI](https://beta.openai.com/signup/).
 
-### Steps to run the app
+#### Steps to run the app
 
 1. Clone the repository or download the source code of the Video Summarizer App to your local machine.
 
