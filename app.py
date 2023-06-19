@@ -74,7 +74,7 @@ def main():
     st.title("Video Summarizer")
         
     # Add a select box for summary type
-    summary_type = st.selectbox("Select Summary Type", ["Detailed", "Concise"])
+    summary_type = st.selectbox("Select Summary Type", ["Detailed", "Concise", "Bullet-points"])
 
     uploaded_file = st.file_uploader("Choose a video file", type=["mp4", "avi", "mov", "mkv"])
 

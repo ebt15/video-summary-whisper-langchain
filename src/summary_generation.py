@@ -15,10 +15,19 @@ class SummaryGenerator:
         texts = self.text_splitter.split_text(document_text)
 
         return [Document(page_content=t) for t in texts[:4]]
+    
+    def add_newlines(self, text):
+        lines = text.split('- ')
+        result = lines[0]
+        for line in lines[1:]:
+            result += '\n- ' + line
+        return result
 
     def generate_summary(self, docs, summary_type="concise"):
-        if summary_type == "detailed":
+        if summary_type == "Detailed":
             return self.generate_detailed_summary(docs)
+        elif summary_type == "Bullet-points":
+            return self.generate_bullet_points_summary(docs)
         # Load the summarization chain
         chain = load_summarize_chain(self.llm, chain_type="refine")
 
@@ -57,6 +66,24 @@ class SummaryGenerator:
 
         output_summary = chain({"input_documents": docs}, return_only_outputs=True)
         return output_summary['output_text']
+    
+    def generate_bullet_points_summary(self, docs):
+        prompt_template = """Write a concise summary of the following extracting the key information:
+
+                            {text}
+
+                            CONCISE SUMMARY IN BULLET POINTS:"""
+        PROMPT = PromptTemplate(template=prompt_template, 
+                                input_variables=["text"])
+
+        chain = load_summarize_chain(self.llm, 
+                                     chain_type="refine", 
+                                     return_intermediate_steps=True, 
+                                     question_prompt=PROMPT, 
+                                     verbose=True)
+
+        output_summary = chain({"input_documents": docs}, return_only_outputs=True)
+        return self.add_newlines(output_summary['output_text'])
 
     def wrap_text(self, text, width=100):
         return textwrap.fill(text, width=width)
@@ -70,7 +97,7 @@ class SummaryGenerator:
         summary = self.generate_summary(docs, summary_type)
 
         print("Wrapping text...")
-        return self.wrap_text(summary)
+        return summary
 
 if __name__ == "__main__":
     summary_generator = SummaryGenerator()
