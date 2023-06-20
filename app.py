@@ -27,17 +27,8 @@ class VideoSummarizer:
     @staticmethod
     def create_auto_download_link(content, filename):
         b64_content = base64.b64encode(content.encode()).decode()
-        js_code = f'''
-            function download_transcript() {{
-                var link = document.createElement('a');
-                link.href = "data:text/plain;base64,{b64_content}";
-                link.download = "{filename}";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }}
-        '''
-        return f'<script>{js_code}</script><button onclick="download_transcript()">Download Transcript</button>'
+        download_link = f'<a href="data:text/plain;base64,{b64_content}" download="{filename}" style="text-decoration: none;"><button style="color: white; background-color: #4f8bf9; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer;">Download Transcript</button></a>'
+        return download_link
 
     def process_video(self, video_path, progress_bar, progress_text, summary_type):
         progress_text.text("Processing video...")
@@ -98,7 +89,7 @@ def main():
 
         # Provide a feature to download the transcript
         download_link = video_summarizer.create_auto_download_link(transcript, "transcript.txt")
-        components.v1.html(download_link, height=50)
+        st.markdown(download_link, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
